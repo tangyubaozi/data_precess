@@ -152,7 +152,11 @@ int main(int argc, char *argv[])//第一个参数是序号，第二个参数是工作路径；
 	//	Save(pListTime);
 	Precess(pListTime, space, pWorkspace_dir);
 //	Precess0(pListTime, space, pWorkspace_dir);
+	FILE *file;
+	freopen_s(&file, "CON", "r", stdin);
+	freopen_s(&file, "CON", "w", stdout);
 	printf("OK");
+	fclose(file);
 	return 0;
 }
 
