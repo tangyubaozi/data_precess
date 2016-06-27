@@ -73,8 +73,10 @@ void InsertNumFacter(NODE *p0, NODE *p1, FACTER *abc)
 void DoInsertNum(NODE *pmin, NODE *pmax, FACTER *abc, LIST *pListTime)
 {	
 	NODE *p;
-	
+	__int64 random;
+	FILE *fplog;
 	p = pListTime->p_pointer;
+	freopen_s(&fplog, "D:/1234/add.txt", "at", stdout);
 	do
 	{
 
@@ -82,7 +84,9 @@ void DoInsertNum(NODE *pmin, NODE *pmax, FACTER *abc, LIST *pListTime)
 		{
 			if ((p->item.timeUTCG - pListTime->head_item.timeUTCG) >= pmin->item.timeUTCG)
 				{
-					p->item.timeps = abc->a * p->item.timeUTCG + abc->b + p->item.timeps /*+ NormalRandom(abc->miu, abc->sigma, abc->min, abc->max)*/;//	y=a*x+b+y0+random
+					random = NormalRandom(abc->miu, abc->sigma, abc->min, abc->max);
+					p->item.timeps = abc->a * p->item.timeUTCG + abc->b + p->item.timeps + random;//	y=a*x+b+y0+random
+					printf("%lld\n", random + abc->a * p->item.timeUTCG + abc->b);
 					if ((p->item.timeUTCG - pListTime->head_item.timeUTCG) >= pmax->item.timeUTCG)
 						break;		
 				}
@@ -90,5 +94,7 @@ void DoInsertNum(NODE *pmin, NODE *pmax, FACTER *abc, LIST *pListTime)
 		p = p->next;
 	} while (p != NULL);
 	pListTime->p_pointer = p;
+	fflush(fplog);
+	fclose(fplog);
 	return;
 }
