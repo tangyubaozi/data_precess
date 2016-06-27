@@ -11,7 +11,7 @@ void Precess(LIST *plist, DATASPACE *space,char *pWorkspace_dir)
 	__int64 j = 0;
 
 	NODE *p;
-	FILE *fp;
+	FILE *fp, *fplog;
 	errno_t err;
 	char string[100];
 	sprintf_s(string,"%s" FILENAME_OUT, pWorkspace_dir);
@@ -72,6 +72,15 @@ void Precess(LIST *plist, DATASPACE *space,char *pWorkspace_dir)
 	}
 	else
 		printf("\n！保存文件出错：无法打开数据文件！");
+
+	freopen_s(&fplog, "D:/1234/output.txt", "w", stdout);
+	for (i = 0; i < plist->nodesize; i++)
+	{
+		printf("%5d		%lld\n", space->channel[i], space->time[i]);
+	}
+	fflush(fplog);
+	fclose(fplog);
+
 	return;
 }
 
