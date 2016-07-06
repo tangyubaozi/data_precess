@@ -84,9 +84,9 @@ void DoInsertNum(NODE *pmin, NODE *pmax, FACTER *abc, LIST *pListTime)
 		{
 			if ((p->item.timeUTCG - pListTime->head_item.timeUTCG) >= pmin->item.timeUTCG)
 				{
-					random = NormalRandom(abc->miu, abc->sigma, abc->min, abc->max);
-					p->item.timeps = abc->a * p->item.timeUTCG + abc->b + p->item.timeps + random;//	y=a*x+b+y0+random
-					addd = random + abc->a * p->item.timeUTCG + abc->b;
+					//random = NormalRandom(abc->miu, abc->sigma, abc->min, abc->max);
+					p->item.timeps = abc->a * p->item.timeUTCG + abc->b + p->item.timeps/* + random*/;//	y=a*x+b+y0+random
+					addd =abc->a * p->item.timeUTCG + abc->b;
 					printf("%lld\n", addd);
 					if ((p->item.timeUTCG - pListTime->head_item.timeUTCG) >= pmax->item.timeUTCG)
 						break;		

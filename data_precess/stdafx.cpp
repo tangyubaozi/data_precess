@@ -98,7 +98,7 @@ void ReadOrbit(LIST *plist)
 	FILE *fp;
 	errno_t err;
 	srand(GetTickCount());		//随机数种子
-	if ((err = fopen_s(&fp, "C:/Users/Ttyy/Documents/Visual Studio 2015/Projects/data_precess/Debug/" FILENAME_ORBIT_IN, "r")) == 0)
+	if ((err = fopen_s(&fp, "" FILENAME_ORBIT_IN, "r")) == 0)
 	{
 		//		fscanf(fp,"%d",&n);					/*读出记录总数量*/
 		pFirst = (NODE *)malloc(sizeof(NODE));

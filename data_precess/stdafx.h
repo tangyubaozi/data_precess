@@ -35,7 +35,7 @@
 //#define INSERTSIZE 10//插值等级：10，100，1000，10000
 #define DATASIZE 10000000//		数据条目数量，用于data_precess.cpp
 #define UNITTIMEUTCG 1000000000//	定义标准时钟的单位：ms=1;us=1,000;ns=1,000,000;ps=1,000,000,000
-#define UNITORBITPRE 1000000000000//定义轨道时间精度：1s=10e12;1ms=10e9
+#define UNITORBITPRE 1000000000000//定义轨道时间精度：1s=1e12;1ms=1e9
 
 
 typedef struct {
@@ -103,7 +103,6 @@ void DoInsertNum(NODE *pmin, NODE *pmax, FACTER *abc, LIST *pListTime);
 void Insert(LIST *plist, NODE *p);
 int char2byte(char c);
 __int64 Time2BinaryBytes(char *timeUTCG);
-__int64	Decimalchar2BinaryBytes(char *c);
 void Save(LIST *plist);//(弃用)
 void InsertUn(LIST *plist, NODE *p);
 void Precess(LIST *plist, DATASPACE *space, char *pWorkspace_dir);
